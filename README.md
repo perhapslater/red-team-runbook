@@ -2,7 +2,7 @@
 
 A practical reference for authorized security assessments, published by PerhapsLater.
 
-[Read the publication](https://perhapslater.com/red-team-runbook/) · [GitHub repository](https://github.com/perhapslater/red-team-runbook)
+[Read the publication](https://perhapslater.github.io/red-team-runbook/) · [GitHub repository](https://github.com/perhapslater/red-team-runbook)
 
 - Protocol and tool playbooks, assessment workflow, and command index.
 - Browser-local engagement variables, derived domain values, and an optional guided tour.
