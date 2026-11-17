@@ -29,10 +29,10 @@ button,input,select{font-family:var(--body)}
 .md-search-result__meta{background:#232934;color:var(--muted)}
 .md-search-result__item{background:#202733}
 .md-search-result__link:hover{background:#303b49}
-.md-header__source{width:9rem;margin-left:.3rem}
+.md-header__source{flex:none;width:max-content;max-width:none;margin-left:.3rem}
 .md-source{font-size:.62rem}
 .md-source__facts{display:none}
-.md-source__repository{font-weight:500}
+.md-source__repository{max-width:none;font-weight:500}
 .md-tabs{background:var(--bg);color:var(--muted);border-bottom:1px solid var(--line)}
 .md-tabs .md-grid{padding:0 1.3rem}
 .md-tabs__list{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#485361 transparent}
@@ -125,7 +125,8 @@ button,input,select{font-family:var(--body)}
 .pl-image-dialog .icon-button{display:flex;margin:0 0 10px auto}
 .pl-toast{position:fixed;bottom:24px;left:50%;z-index:120;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:#dce5ee;color:#17202a;padding:13px 20px;border-radius:8px;font-size:14px;box-shadow:0 10px 30px #0004;transition:opacity 140ms,transform 140ms;max-width:calc(100vw - 32px);text-align:center}
 .pl-toast.visible{opacity:1;transform:translate(-50%,0)}
-.runbook-variables-button{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);border-radius:.3rem;padding:.45rem .55rem;color:var(--ink);font-size:.7rem;margin-left:.4rem;background:#232934;cursor:pointer;line-height:1.3}
+.runbook-variables-button:not([hidden]){display:inline-flex}
+.runbook-variables-button{align-items:center;gap:.35rem;border:1px solid var(--line);border-radius:.3rem;padding:.45rem .55rem;color:var(--ink);font-size:.7rem;margin-left:.4rem;background:#232934;cursor:pointer;line-height:1.3}
 .runbook-variables-button__icon{font-family:var(--mono);font-size:.75rem;color:var(--accent)}
 .runbook-variables-button__count{background:var(--accent);color:var(--bg);border-radius:4px;min-width:1em;font-size:.55rem;padding:.05rem .2rem}
 .runbook-variables__backdrop{position:fixed;inset:0;background:#070b12bd;z-index:90;opacity:0;transition:opacity 180ms}
@@ -159,7 +160,7 @@ body.runbook-variables-open{overflow:hidden}
 .runbook-onboarding__actions button,.runbook-tour__actions button{border:1px solid var(--line);border-radius:5px;padding:9px 12px;font-size:13px;background:transparent;color:var(--ink);cursor:pointer}
 .runbook-onboarding__actions .runbook-onboarding__primary,.runbook-tour__actions .runbook-onboarding__primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:650}
 .runbook-tour-target{outline:3px solid var(--accent)!important;outline-offset:6px;scroll-margin-top:160px}
-@media(max-width:76.25em){.md-header__source{width:auto}.md-source__repository{display:none}.md-source__icon{margin-right:0}.md-header__title{flex-basis:8.5rem}.md-content__inner{margin-left:1rem;margin-right:1rem}}
+@media(max-width:76.25em){.md-source__repository{display:none}.md-source__icon{margin-right:0}.md-header__title{flex-basis:8.5rem}.md-content__inner{margin-left:1rem;margin-right:1rem}}
 @media(max-width:59.99em){.md-header__inner{gap:.2rem;padding:0 .6rem}.md-header__title{margin-right:.25rem}.pl-publications{font-size:.68rem;gap:0}.pl-publications a{padding:.5rem .6rem}.runbook-variables-button__label{display:none}.runbook-variables-button{border:0;background:none;padding:.4rem}.md-typeset h1{font-size:2.1rem}.md-content__inner{margin-left:.8rem;margin-right:.8rem}}
 @media(max-width:39.99em){.md-header__inner{flex-wrap:wrap;min-height:3.1rem;padding:.2rem .5rem}.md-header__title{flex:1 1 5rem;font-size:1rem;margin-left:0}.md-header__source{display:none}.pl-publications{order:10;flex-basis:100%;margin-left:.35rem;margin-bottom:.25rem;gap:.35rem}.pl-publications a{padding:.4rem .65rem}.md-main__inner{margin-top:1.3rem}.md-content__inner{margin:0 .7rem 1.5rem}.md-typeset{font-size:.82rem}.md-typeset h1{font-size:1.9rem;letter-spacing:-.045rem}.md-typeset h2{font-size:1.35rem}.md-typeset pre>code{font-size:.62rem;padding:.8rem}.pl-footer{display:block;padding:1.2rem 1rem}.pl-footer>span{display:block;margin-top:.5rem}.pl-footer nav{margin-top:1rem;gap:1rem}.runbook-variables{padding:22px}.runbook-onboarding-welcome,.runbook-tour{right:16px;bottom:16px}.wu-meta{gap:.35rem}.wu-tags{gap:.4rem}}
 
