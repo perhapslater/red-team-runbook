@@ -1,23 +1,11 @@
 ---
 title: Command Index
 description: A focused quick reference of the commands used most across the runbook, grouped by operator workflow and linked to the full playbooks.
-hide:
-  - toc
 ---
 
 # Command Index
 
 The commands you reach for first, grouped by workflow. Set `$IP`, `$SUBNET`, `$LHOST`, `$DOMAIN`, and `$DC_IP` from **Variables**, replace the remaining placeholders, and confirm scope before running anything. Use the linked playbooks for prerequisites, alternatives, expected output, and cleanup.
-
-<nav class="command-index-jumps" aria-label="Command Index sections">
-  <ul>
-    <li><a href="#discover-and-scan">Discover and scan</a></li>
-    <li><a href="#enumerate-exposed-services">Enumerate exposed services</a></li>
-    <li><a href="#credentials-and-active-directory">Credentials and Active Directory</a></li>
-    <li><a href="#shells-and-host-triage">Shells and host triage</a></li>
-    <li><a href="#access-transfer-and-pivot">Access, transfer, and pivot</a></li>
-  </ul>
-</nav>
 
 ## Discover and scan
 

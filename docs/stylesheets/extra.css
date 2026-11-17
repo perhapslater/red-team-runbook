@@ -68,10 +68,6 @@ button,input,select{font-family:var(--body)}
 .md-code__nav>[data-md-type="copy"]:hover,.md-code__nav>[data-md-type="copy"]:focus-visible{color:var(--accent)}
 .md-code__nav>[data-md-type="copy"]:focus-visible{outline:2px solid var(--accent);outline-offset:0}
 .md-typeset pre:has(>.md-code__nav)>code{padding-block-start:2.1rem}
-.md-typeset .command-index-jumps ul{display:flex;flex-wrap:wrap;gap:.4rem;max-width:none;margin:0;padding:0;list-style:none}
-.md-typeset .command-index-jumps ul>li{margin:0}
-.command-index-jumps a{display:block;padding:.3rem .5rem;border:1px solid var(--line);border-radius:.35rem;background:var(--surface);font-size:.7rem}
-.command-index-jumps a:hover,.command-index-jumps a:focus-visible{border-color:var(--accent)}
 .md-typeset .admonition,.md-typeset details{font-size:.76rem;line-height:1.8;border-radius:.35rem;background:rgba(35,41,52,.6);box-shadow:none}
 .md-typeset .admonition-title,.md-typeset summary{font-weight:650;max-width:none}
 .md-typeset table:not([class]){font-size:.71rem;line-height:1.65;min-width:100%;border:1px solid var(--line);border-radius:.35rem;background:var(--bg)}
