@@ -1,0 +1,58 @@
+# Subdomain & Parameter Fuzzing
+
+!!! tip "Tip"
+    For parameter fuzzing, `x8` is faster than ffuf for discovering hidden parameters in existing endpoints. For subdomain fuzzing, filter by response size, wildcard DNS returns 200 for everything.
+
+!!! warning "Watch out"
+    Virtual host fuzzing requires the `Host` header, not the URL. Use `ffuf -H "Host: FUZZ.$DOMAIN"`, changing the URL path won't work.
+
+---
+
+## Subdomain Enumeration
+
+### subfinder
+
+```sh
+subfinder -d $DOMAIN
+```
+
+### amass
+
+```sh
+amass enum -passive -d $DOMAIN
+```
+
+- `-passive` → Runs passive enumeration to avoid triggering alerts.
+
+### gobuster
+
+```sh
+gobuster dns -d $DOMAIN -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+```
+
+### ffuf (vhost fuzzing)
+
+```sh
+ffuf -u 'http://$DOMAIN' -H 'Host: FUZZ.$DOMAIN' -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -fs <baseline-size>
+```
+
+Capture the baseline response size for the default host first (wildcard DNS returns 200 for everything), then filter it out with `-fs`. You can also filter by word or line count: `-fw <n>` / `-fl <n>`.
+
+---
+
+## Parameter Fuzzing
+
+### ffuf
+
+```bash
+ffuf -u "http://$IP/page.php?FUZZ=value" -w /usr/share/seclists/Fuzzing/special-chars.txt
+```
+
+### arjun
+
+```bash
+arjun -u http://$IP/page.php -w /usr/share/seclists/Fuzzing/special-chars.txt
+```
+
+- Automates parameter fuzzing for GET and POST requests.
+- Supports JSON and XML-based APIs.

@@ -1,0 +1,216 @@
+site_name: Red Team Runbook
+site_description: Commands, methodology, and decision points for authorized network, web application, and Active Directory assessments.
+site_author: PerhapsLater
+site_url: !ENV [SITE_URL, "https://perhapslater.com/red-team-runbook/"]
+repo_url: https://github.com/perhapslater/red-team-runbook
+repo_name: perhapslater/red-team-runbook
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; PerhapsLater
+
+theme:
+  name: material
+  custom_dir: overrides
+  font: false
+  logo: assets/brand.svg
+  favicon: assets/brand.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    scheme: slate
+    primary: custom
+    accent: amber
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/runbook-variables.js
+  - javascripts/runbook-onboarding.js
+  - javascripts/publication.js
+
+extra:
+  generator: false
+  publication: runbook
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/perhapslater
+      name: PerhapsLater on GitHub
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+hooks:
+  - hooks/publication.py
+
+nav:
+  - Start Here:
+    - Overview: index.md
+    - Operator Workflow: workflow.md
+    - About & Standards: about.md
+  - Command Index: command-index.md
+  - Enumeration:
+    - Quick Start: enumeration/index.md
+    - Network Scanning: enumeration/network-scanning.md
+    - Reconnaissance: enumeration/reconnaissance.md
+    - Traffic Capture: enumeration/traffic-capture.md
+  - Services:
+    - Overview: information-gathering/index.md
+    - DNS (53): information-gathering/service-analysis/dns-53.md
+    - Docker API (2375): information-gathering/service-analysis/docker-2375.md
+    - Elasticsearch (9200): information-gathering/service-analysis/elasticsearch-9200.md
+    - FTP (21): information-gathering/service-analysis/ftp-21.md
+    - HTTP/HTTPS (80, 443): information-gathering/service-analysis/http-80-443.md
+    - IMAP (143, 993): information-gathering/service-analysis/imap.md
+    - IPMI (623): information-gathering/service-analysis/ipmi-623.md
+    - IKE/ISAKMP (500, 4500): information-gathering/service-analysis/isakmp-ike.md
+    - Kerberos (88): information-gathering/service-analysis/kerberos-88.md
+    - LDAP (389, 636): information-gathering/service-analysis/ldap.md
+    - MongoDB (27017): information-gathering/service-analysis/mongodb-27017.md
+    - MSSQL (1433): information-gathering/service-analysis/mssql-1433.md
+    - MySQL (3306): information-gathering/service-analysis/mysql-3306.md
+    - NFS (2049): information-gathering/service-analysis/nfs-2049.md
+    - Oracle TNS (1521): information-gathering/service-analysis/oracle-tns-1521.md
+    - POP3 (110, 995): information-gathering/service-analysis/pop3.md
+    - PostgreSQL (5432): information-gathering/service-analysis/postgresql-5432.md
+    - R-Services (512-514): information-gathering/service-analysis/r-services.md
+    - RDP (3389): information-gathering/service-analysis/rdp-3389.md
+    - Redis (6379): information-gathering/service-analysis/redis-6379.md
+    - Rsync (873): information-gathering/service-analysis/rsync-873.md
+    - SMB (139, 445): information-gathering/service-analysis/smb.md
+    - SMTP (25, 465, 587): information-gathering/service-analysis/smtp.md
+    - SNMP (161, 162): information-gathering/service-analysis/snmp.md
+    - SNMP Multiplexer (199): information-gathering/service-analysis/snmp-multiplexer.md
+    - SSH (22): information-gathering/service-analysis/ssh-22.md
+    - Telnet (23): information-gathering/service-analysis/telnet-23.md
+    - TFTP (69): information-gathering/service-analysis/tftp-69.md
+    - VNC (5900): information-gathering/service-analysis/vnc-5900.md
+    - WinRM (5985, 5986): information-gathering/service-analysis/winrm.md
+  - Applications:
+    - Overview: applications/index.md
+    - Enumeration:
+      - Directory & Page Fuzzing: applications/enumeration/directory-page-fuzzing.md
+      - Service Identification: applications/enumeration/service-identification.md
+      - Subdomain & Parameter Fuzzing: applications/enumeration/subdomain-parameter-fuzzing.md
+    - Application Enumeration:
+      - Gitea: applications/app-enumeration/gitea.md
+      - WebDAV: applications/app-enumeration/webdav.md
+      - WordPress: applications/app-enumeration/wordpress.md
+    - Authentication Attacks:
+      - Credential Brute-Forcing: applications/auth/credential-brute-forcing.md
+      - JWT Attacks: applications/auth/jwt-attacks.md
+      - Session Hijacking: applications/auth/session-hijacking.md
+    - Exploits:
+      - Command Injection: applications/exploits/command-injection.md
+      - File Upload Attacks: applications/exploits/file-upload-attacks.md
+      - IDOR: applications/exploits/idor.md
+      - LFI: applications/exploits/lfi.md
+      - OAuth Exploitation: applications/exploits/oauth-exploitation.md
+      - SQLMap: applications/exploits/sqlmap.md
+      - SSRF: applications/exploits/ssrf.md
+      - SSTI: applications/exploits/ssti.md
+      - XSS: applications/exploits/xss.md
+      - XXE: applications/exploits/xxe.md
+  - Exploitation:
+    - Overview: exploitation/index.md
+    - Binary Exploitation:
+      - Buffer Overflows: exploitation/binary/buffer-overflows.md
+      - ELF & DLL Analysis: exploitation/binary/elf-dll-analysis.md
+    - Credential Attacks:
+      - Brute-Force Cracking: exploitation/credentials/brute-force-cracking.md
+    - Shells:
+      - Bind & Reverse Shells: exploitation/shells/bind-reverse-shells.md
+      - Escaping Restricted Shells: exploitation/shells/escaping-restricted-shells.md
+      - Web Shells: exploitation/shells/web-shells.md
+  - Priv Esc:
+    - Overview: privilege-escalation/index.md
+    - Situational Awareness: privilege-escalation/situational-awareness.md
+    - Linux:
+      - Overview: privilege-escalation/linux/index.md
+      - Local Enumeration: privilege-escalation/linux/local-enumeration.md
+      - Credential Hunting: privilege-escalation/linux/credential-hunting.md
+      - Cron Job & SUID/GUID: privilege-escalation/linux/cron-suid-guid.md
+      - Capabilities, LD_PRELOAD & PATH: privilege-escalation/linux/capabilities-ldpreload.md
+      - Kernel Exploitation: privilege-escalation/linux/kernel-exploitation.md
+    - Windows:
+      - Overview: privilege-escalation/windows/index.md
+      - Local Enumeration: privilege-escalation/windows/local-enumeration.md
+      - Credential Dumping: privilege-escalation/windows/credential-dumping.md
+      - Privilege Abuse: privilege-escalation/windows/privilege-abuse.md
+      - Service Exploitation: privilege-escalation/windows/service-exploitation.md
+    - Active Directory:
+      - Overview: privilege-escalation/active-directory/index.md
+      - Domain Enumeration: privilege-escalation/active-directory/domain-enumeration.md
+      - AS-REP Roasting: privilege-escalation/active-directory/asrep-roasting.md
+      - Kerberoasting: privilege-escalation/active-directory/kerberoasting.md
+      - ACL Abuse: privilege-escalation/active-directory/acl-abuse.md
+      - DCSync: privilege-escalation/active-directory/dcsync.md
+      - Silver & Golden Tickets: privilege-escalation/active-directory/silver-golden-tickets.md
+  - Lateral Movement:
+    - Overview: lateral-movement/index.md
+    - Windows: lateral-movement/windows.md
+    - Active Directory: lateral-movement/active-directory.md
+  - Persistence:
+    - Overview: persistence/index.md
+    - Linux: persistence/linux.md
+    - Windows: persistence/windows.md
+    - Active Directory: privilege-escalation/active-directory/persistence.md
+    - Backdoor SSH & WinRM: persistence/backdoor-ssh-winrm.md
+    - DLL Injection & Services: persistence/dll-injection-malicious-services.md
+    - Registry & Scheduled Tasks: persistence/registry-scheduled-tasks.md
+  - Data Exfiltration:
+    - Overview: data-exfiltration/index.md
+    - File Transfer Techniques: data-exfiltration/file-transfer-techniques.md
+    - Secure Transfers: data-exfiltration/secure-transfers.md
+  - Tunneling:
+    - Overview: port-forwarding/index.md
+    - Port Forwarding: port-forwarding/port-forwarding.md
+    - Ligolo-ng & Chisel: port-forwarding/ligolo-chisel.md
+  - Tools:
+    - Overview: tools/index.md
+    - BloodHound: tools/bloodhound.md
+    - Burp Suite: applications/tools/burp-suite.md
+    - cadaver: tools/cadaver.md
+    - Command-Line Shells: tools/command-line-shells.md
+    - EyeWitness: applications/tools/eyewitness.md
+    - Impacket: tools/impacket.md
+    - kerbrute: tools/kerbrute.md
+    - ldapsearch: tools/ldapsearch.md
+    - Metasploit: tools/metasploit.md
+    - Metasploit Resource Scripts: tools/metasploit-resource-scripts.md
+    - Mimikatz: tools/mimikatz.md
+    - MSFVenom: tools/msfvenom.md
+    - NetExec: tools/netexec.md
+    - Nikto: applications/tools/nikto.md
+    - Nuclei: tools/nuclei.md
+    - Password Cracking: tools/password-cracking.md
+    - Responder: tools/responder.md
+    - rpcclient: tools/rpcclient.md

