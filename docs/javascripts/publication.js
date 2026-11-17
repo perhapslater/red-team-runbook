@@ -29,7 +29,7 @@
       notify("Select the command text to copy it in this browser.");
       return;
     }
-    navigator.clipboard.writeText(text).then(function () { notify("Copied to clipboard"); }, function () {
+    navigator.clipboard.writeText(text).then(function () { notify("Copied"); }, function () {
       notify("Clipboard access is unavailable. Select the command text to copy it.");
     });
   }
